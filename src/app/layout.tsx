@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Link from "next/link";
 
-import { ConvexClientProvider } from "./ConvexClientProvider";
+import ConvexClientProvider from "./ConvexClientProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,7 +38,7 @@ const Footer = () => {
     <div className="h-20 p-6">
       <p className="text-center text-xs text-neutral-600">
         &copy; {new Date().getFullYear()} RCB Software. All rights reserved. |
-        Made with ⚡️ by{" "}
+        By{" "}
         <Link href="https://ryelbanfield.me" target="_blank" rel="noreferrer">
           Ryel Banfield
         </Link>
@@ -47,11 +47,7 @@ const Footer = () => {
   );
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <ClerkProvider>
       <html lang="en">
@@ -60,11 +56,13 @@ export default function RootLayout({
         >
           <ConvexClientProvider>
             <Navbar />
-            {children}
+            <main className="grid grow">{children}</main>
             <Footer />
           </ConvexClientProvider>
         </body>
       </html>
     </ClerkProvider>
   );
-}
+};
+
+export default RootLayout;

@@ -1,9 +1,11 @@
 import { UserResource } from "@clerk/types";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
 import { useQuery } from "convex/react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { api } from "../../convex/_generated/api";
+import { api } from "../../../convex/_generated/api";
+import { Button } from "../../components/ui/button";
 
 const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
   const userFromConvex = useQuery(api.users.getUser, {
@@ -21,15 +23,24 @@ const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
   if (userFromConvex === null) redirect("/update-username");
 
   return (
-    <div className="grid grow place-items-center">
-      <div>
-        <p className="text-center">
-          Hello, {userFromClerk.firstName} from Clerk!
-        </p>
-        <p className="text-center">
-          Your username from Convex is {userFromConvex.username}
-        </p>
-      </div>
+    <div className="flex flex-col gap-6">
+      <Button size={"sm"} asChild>
+        <Link href="/world" className="uppercase">
+          Enter World
+        </Link>
+      </Button>
+
+      <Button size={"sm"} asChild>
+        <Link href="/character" className="uppercase">
+          View Character
+        </Link>
+      </Button>
+
+      <Button size={"sm"} asChild>
+        <Link href="/marketplace" className="uppercase">
+          View Marketplace
+        </Link>
+      </Button>
     </div>
   );
 };

@@ -4,9 +4,9 @@ import { useUser } from "@clerk/nextjs";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
 import { redirect } from "next/navigation";
 
-import UpdateUsernameForm from "./UpdateUsernameForm";
+import ClientMenu from "./ClientMenu";
 
-const UpdateUsernamePage = () => {
+const GamePage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
 
   if (!isLoaded) {
@@ -19,7 +19,11 @@ const UpdateUsernamePage = () => {
 
   if (!isSignedIn) redirect("/");
 
-  return <UpdateUsernameForm user={user} />;
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <ClientMenu userFromClerk={user} />
+    </div>
+  );
 };
 
-export default UpdateUsernamePage;
+export default GamePage;

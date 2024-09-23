@@ -2,12 +2,12 @@
 
 import { SignInButton, useUser } from "@clerk/nextjs";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
+import { redirect } from "next/navigation";
 
-import ClientHomePage from "@/components/ClientHomePage";
 import { Button } from "@/components/ui/button";
 
 const LandingPage = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { isLoaded, isSignedIn } = useUser();
 
   if (!isLoaded) {
     return (
@@ -17,21 +17,15 @@ const LandingPage = () => {
     );
   }
 
-  if (!isSignedIn) {
-    return (
-      <div className="grid grow place-items-center">
-        <SignInButton mode="modal">
-          <Button size={"sm"} className="uppercase">
-            Sign in
-          </Button>
-        </SignInButton>
-      </div>
-    );
-  }
+  if (isSignedIn) redirect("/game");
 
   return (
-    <div className="flex grow flex-col">
-      <ClientHomePage userFromClerk={user} />
+    <div className="grid grow place-items-center">
+      <SignInButton mode="modal">
+        <Button size={"sm"} className="uppercase">
+          Sign up or Log in
+        </Button>
+      </SignInButton>
     </div>
   );
 };
