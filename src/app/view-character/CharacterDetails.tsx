@@ -26,7 +26,7 @@ const CharacterDetails = ({
   }
 
   return (
-    <div className="flex flex-col gap-6 px-6 py-12">
+    <div className="flex flex-col gap-6 px-6 py-12 sm:flex-row sm:justify-between">
       <h1 className="text-xl font-bold">{character!.name}</h1>
 
       <Image
@@ -34,11 +34,8 @@ const CharacterDetails = ({
         alt={character!.name}
         width={1080}
         height={1080}
-        className="max-w-sm rounded"
+        className="rounded sm:max-w-sm"
       />
-
-      <p>{character?.faction}</p>
-      <p>{character?.description}</p>
     </div>
   );
 };
