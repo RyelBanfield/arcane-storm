@@ -34,7 +34,7 @@ const CharacterDetails = ({
         alt={character!.name}
         width={1080}
         height={1080}
-        className="rounded"
+        className="max-w-sm rounded"
       />
 
       <p>{character?.faction}</p>

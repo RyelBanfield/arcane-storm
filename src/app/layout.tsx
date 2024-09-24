@@ -52,7 +52,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.className} flex min-h-screen flex-col antialiased`}
+          className={`${geistSans.className} container mx-auto flex min-h-screen flex-col antialiased`}
         >
           <ConvexClientProvider>
             <Navbar />
