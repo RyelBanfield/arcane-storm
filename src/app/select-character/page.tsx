@@ -4,9 +4,9 @@ import { useUser } from "@clerk/nextjs";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
 import { redirect } from "next/navigation";
 
-import UpdateUsernameForm from "./UpdateUsernameForm";
+import CharacterSelection from "./CharacterSelection";
 
-const UpdateUsernamePage = () => {
+const SelectCharacterPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
 
   if (!isLoaded) {
@@ -19,7 +19,13 @@ const UpdateUsernamePage = () => {
 
   if (!isSignedIn) redirect("/");
 
-  return <UpdateUsernameForm userFromClerk={user} />;
+  return (
+    <div className="flex flex-col gap-6 px-6 py-12">
+      <h1 className="text-xl font-bold">Select Character</h1>
+
+      <CharacterSelection userFromClerk={user} />
+    </div>
+  );
 };
 
-export default UpdateUsernamePage;
+export default SelectCharacterPage;

@@ -31,11 +31,15 @@ const formSchema = z.object({
     }),
 });
 
-const UpdateUsernameForm = ({ user }: { user: UserResource }) => {
+const UpdateUsernameForm = ({
+  userFromClerk,
+}: {
+  userFromClerk: UserResource;
+}) => {
   const router = useRouter();
   const insertOrPatchUsername = useMutation(api.users.insertOrPatchUsername);
   const userFromConvex = useQuery(api.users.getUser, {
-    clerkId: user.id,
+    clerkId: userFromClerk.id,
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,7 +61,7 @@ const UpdateUsernameForm = ({ user }: { user: UserResource }) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     await insertOrPatchUsername({
-      clerkId: user.id,
+      clerkId: userFromClerk.id,
       username: values.username,
     });
 

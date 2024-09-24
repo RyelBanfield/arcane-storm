@@ -7,7 +7,11 @@ import { redirect } from "next/navigation";
 import { api } from "../../../convex/_generated/api";
 import { Button } from "../../components/ui/button";
 
-const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
+const MainGameNavigation = ({
+  userFromClerk,
+}: {
+  userFromClerk: UserResource;
+}) => {
   const userFromConvex = useQuery(api.users.getUser, {
     clerkId: userFromClerk.id,
   });
@@ -21,6 +25,8 @@ const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
   }
 
   if (userFromConvex === null) redirect("/update-username");
+  console.log(userFromConvex.currentCharacterId);
+  if (!userFromConvex.currentCharacterId) redirect("/select-character");
 
   return (
     <div className="flex flex-col gap-6">
@@ -37,6 +43,12 @@ const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
       </Button>
 
       <Button size={"sm"} asChild>
+        <Link href="/select-character" className="uppercase">
+          Select Character
+        </Link>
+      </Button>
+
+      <Button size={"sm"} asChild>
         <Link href="/marketplace" className="uppercase">
           View Marketplace
         </Link>
@@ -45,4 +57,4 @@ const ClientHomePage = ({ userFromClerk }: { userFromClerk: UserResource }) => {
   );
 };
 
-export default ClientHomePage;
+export default MainGameNavigation;

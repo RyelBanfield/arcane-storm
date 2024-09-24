@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
 import { redirect } from "next/navigation";
 
-import ClientMenu from "./ClientMenu";
+import MainGameNavigation from "./MainGameNavigation";
 
 const GamePage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -21,7 +21,7 @@ const GamePage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <ClientMenu userFromClerk={user} />
+      <MainGameNavigation userFromClerk={user} />
     </div>
   );
 };
