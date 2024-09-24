@@ -38,7 +38,7 @@ const CharacterSelection = ({
       {characters.map((character, index) => (
         <div
           key={index}
-          className="aspect-square rounded bg-neutral-900"
+          className="aspect-square rounded bg-neutral-900 hover:cursor-pointer"
           onClick={() => onSelectCharacter(character._id)}
         >
           <Image

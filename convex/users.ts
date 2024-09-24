@@ -69,14 +69,14 @@ export const selectCharacter = mutation({
       currentCharacterId: characterId,
     });
 
-    if (!oldCharacter) throw new Error("Old character not found.");
+    await ctx.db.patch(newCharacter._id, {
+      clerkId: clerkId,
+    });
+
+    if (!oldCharacter) return;
 
     await ctx.db.patch(oldCharacter._id, {
       clerkId: undefined,
-    });
-
-    await ctx.db.patch(newCharacter._id, {
-      clerkId: clerkId,
     });
   },
 });
