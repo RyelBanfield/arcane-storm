@@ -64,6 +64,7 @@ function Calendar({
         ...classNames,
       }}
       components={{
+        // @ts-expect-error Annoying TS error
         IconLeft: ({ ...props }) => <ChevronLeftIcon className="h-4 w-4" />,
         IconRight: ({ ...props }) => <ChevronRightIcon className="h-4 w-4" />,
       }}

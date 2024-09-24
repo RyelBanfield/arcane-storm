@@ -37,7 +37,7 @@ const MainGameNavigation = ({
       </Button>
 
       <Button size={"sm"} asChild>
-        <Link href="/character" className="uppercase">
+        <Link href="/view-character" className="uppercase">
           View Character
         </Link>
       </Button>
