@@ -14,15 +14,5 @@ export default defineSchema({
     faction: v.string(), // Character's faction (e.g., magic, tech)
     description: v.string(), // Description or backstory
     imageUrl: v.string(), // URL to AI-generated image
-    price: v.optional(v.number()), // If listed in the marketplace, price in in-game currency
-    listed: v.optional(v.boolean()), // Whether the character is listed for sale
   }),
-
-  marketplace: defineTable({
-    characterId: v.string(), // Reference to the character being listed
-    sellerId: v.string(), // User listing the character
-    price: v.number(), // Price for the character
-    listedDate: v.number(), // Date it was listed
-    status: v.string(), // "available", "sold", etc.
-  }).index("by_price", ["price"]),
 });

@@ -57,7 +57,7 @@ const UpdateUsernameForm = ({
     );
   }
 
-  console.log(userFromConvex?.username);
+  if (userFromConvex?.username) router.replace("/game");
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     await insertOrPatchUsername({
@@ -73,7 +73,7 @@ const UpdateUsernameForm = ({
       <div className="grid grow place-items-center">
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex w-full flex-col gap-6 p-6"
+          className="flex w-full max-w-sm flex-col gap-6 p-6"
         >
           <FormField
             control={form.control}

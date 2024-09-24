@@ -25,7 +25,6 @@ const MainGameNavigation = ({
   }
 
   if (userFromConvex === null) redirect("/update-username");
-  console.log(userFromConvex.currentCharacterId);
   if (!userFromConvex.currentCharacterId) redirect("/select-character");
 
   return (

@@ -19,7 +19,7 @@ const CharacterPage = () => {
   if (!isSignedIn) redirect("/");
 
   return (
-    <div className="">
+    <div className="grid grow">
       <CharacterDetails userFromClerk={user} />
     </div>
   );

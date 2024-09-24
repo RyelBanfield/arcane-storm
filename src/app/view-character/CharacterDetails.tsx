@@ -17,7 +17,7 @@ const CharacterDetails = ({
     clerkId: userFromClerk.id,
   });
 
-  if (userFromConvex === undefined || character === undefined) {
+  if (!userFromConvex || !character) {
     return (
       <div className="grid grow place-items-center">
         <CircleBackslashIcon className="size-8 animate-spin" />
@@ -26,16 +26,32 @@ const CharacterDetails = ({
   }
 
   return (
-    <div className="flex flex-col gap-6 px-6 py-12 sm:flex-row sm:justify-between">
-      <h1 className="text-xl font-bold">{character!.name}</h1>
+    <div className="flex flex-col gap-6 px-6 py-12 sm:flex-row">
+      <div className="sm:hidden">
+        <h1 className="text-xl font-bold">{character.name}</h1>
+        <p className="text-xs text-neutral-500">{character.faction}</p>
+      </div>
 
-      <Image
-        src={character!.imageUrl}
-        alt={character!.name}
-        width={1080}
-        height={1080}
-        className="rounded sm:max-w-sm"
-      />
+      <div className="w-full">
+        <Image
+          src={character.imageUrl}
+          alt={character.name}
+          width={1080}
+          height={1080}
+          className="rounded"
+        />
+      </div>
+
+      <div className="flex w-full flex-col gap-3 pb-32">
+        <div className="hidden sm:block">
+          <h1 className="text-xl font-bold">{character.name}</h1>
+          <p className="text-xs text-neutral-500">{character.faction}</p>
+        </div>
+
+        <p className="text-xs leading-snug tracking-tight text-neutral-300">
+          {character.description}
+        </p>
+      </div>
     </div>
   );
 };

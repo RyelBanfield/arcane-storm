@@ -21,8 +21,6 @@ const SelectCharacterPage = () => {
 
   return (
     <div className="flex flex-col gap-6 px-6 py-12">
-      <h1 className="text-xl font-bold">Select Character</h1>
-
       <CharacterSelection userFromClerk={user} />
     </div>
   );
