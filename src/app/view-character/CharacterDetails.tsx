@@ -48,7 +48,7 @@ const CharacterDetails = ({
           <p className="text-xs text-neutral-500">{character.faction}</p>
         </div>
 
-        <p className="text-xs leading-snug tracking-tight text-neutral-300">
+        <p className="max-w-xl text-pretty text-sm leading-snug tracking-tight text-neutral-300">
           {character.description}
         </p>
       </div>

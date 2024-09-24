@@ -46,7 +46,7 @@ const CharacterSelection = ({
         {characters.map((character, index) => (
           <div
             key={index}
-            className="flex flex-col gap-3 rounded bg-neutral-950 hover:cursor-pointer"
+            className="flex flex-col gap-3 rounded bg-neutral-900 hover:cursor-pointer"
             onClick={() => onSelectCharacter(character._id)}
           >
             <Image
