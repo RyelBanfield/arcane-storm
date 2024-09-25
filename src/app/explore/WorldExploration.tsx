@@ -242,7 +242,7 @@ const WorldExploration = ({
         {locations.map((location) => (
           <div
             key={location.name}
-            className="flex flex-col gap-3 rounded bg-neutral-900 hover:cursor-pointer"
+            className="flex flex-col rounded bg-neutral-900 hover:cursor-pointer"
             onClick={() => {
               setEvent(null);
               openModal(location);
