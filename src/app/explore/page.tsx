@@ -4,9 +4,9 @@ import { useUser } from "@clerk/nextjs";
 import { CircleBackslashIcon } from "@radix-ui/react-icons";
 import { redirect } from "next/navigation";
 
-import CharacterSelection from "./CharacterSelection";
+import WorldExploration from "./WorldExploration";
 
-const SelectCharacterPage = () => {
+const WorldPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
 
   if (!isLoaded) {
@@ -16,10 +16,9 @@ const SelectCharacterPage = () => {
       </div>
     );
   }
-
   if (!isSignedIn) redirect("/");
 
-  return <CharacterSelection userFromClerk={user} />;
+  return <WorldExploration userFromClerk={user} />;
 };
 
-export default SelectCharacterPage;
+export default WorldPage;

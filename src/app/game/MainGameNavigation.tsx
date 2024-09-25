@@ -30,8 +30,8 @@ const MainGameNavigation = ({
   return (
     <div className="flex flex-col gap-6">
       <Button size={"sm"} asChild>
-        <Link href="/world" className="uppercase">
-          Enter World
+        <Link href="/explore" className="uppercase">
+          Explore World
         </Link>
       </Button>
 

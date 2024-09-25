@@ -6,6 +6,7 @@ export default defineSchema({
     clerkId: v.string(),
     username: v.string(),
     currentCharacterId: v.optional(v.string()), // Reference to the current active character
+    silver: v.number(), // Current silver in the user's wallet
   }),
 
   characters: defineTable({

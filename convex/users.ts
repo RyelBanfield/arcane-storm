@@ -29,6 +29,7 @@ export const insertOrPatchUsername = mutation({
       await ctx.db.insert("users", {
         clerkId,
         username,
+        silver: 0,
       });
     } else {
       await ctx.db.patch(user._id, {
@@ -77,6 +78,26 @@ export const selectCharacter = mutation({
 
     await ctx.db.patch(oldCharacter._id, {
       clerkId: undefined,
+    });
+  },
+});
+
+export const addSilver = mutation({
+  args: {
+    clerkId: v.string(),
+    silver: v.number(),
+  },
+
+  handler: async (ctx, { clerkId, silver }) => {
+    const user = await ctx.db
+      .query("users")
+      .filter((q) => q.eq(q.field("clerkId"), clerkId))
+      .unique();
+
+    if (!user) throw new Error("User not found.");
+
+    await ctx.db.patch(user._id, {
+      silver: user.silver ? user.silver + silver : silver,
     });
   },
 });

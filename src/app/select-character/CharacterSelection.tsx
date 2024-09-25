@@ -39,7 +39,7 @@ const CharacterSelection = ({
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-6 px-6 py-12 pb-32">
       <h1 className="text-xl font-bold">Select Character</h1>
 
       <div className="grid grid-cols-1 gap-6 min-[440px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -70,7 +70,7 @@ const CharacterSelection = ({
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
